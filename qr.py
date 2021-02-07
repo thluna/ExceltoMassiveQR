@@ -39,6 +39,7 @@ while True:
         break
 
     if event == 'Generar':
+        salida_path = str(values['carpeta_salida'])
         file_path = values['input_ruta']
         df = pandas.read_excel(file_path)  #extrae la hoja de excel en una variable
 
@@ -61,8 +62,10 @@ while True:
             codigoqr[qr_actual] = qrcode.make(texto)#generar qr
             draw = PIL.ImageDraw.Draw(codigoqr[qr_actual])
             font = PIL.ImageFont.truetype("arial", 16)
-            draw.text((10, 10),str(qr_actual./),font=font)
+            draw.text((10, 10),str(qr_actual),font=font)
             codigoqr[qr_actual].save(salida_path+ str(qr_actual) + '.png') #guardar qr
         
 window.close()
+
+
 
